@@ -1,0 +1,38 @@
+{
+  "name": "heimhub",
+  "version": "0.0.0",
+  "private": true,
+  "prisma": {
+    "schema": "packages/database/prisma/schema.prisma",
+    "seed": "tsx packages/database/src/seed.ts"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "dev": "dotenv -- turbo run dev --concurrency 12",
+    "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
+  },
+  "dependencies": {
+    "dotenv-cli": "^7.3.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "prettier": "^3.1.0",
+    "tsx": "^4.4.0",
+    "turbo": "1.10.16"
+  },
+  "packageManager": "yarn@1.22.19",
+  "engines": {
+    "node": ">=20",
+    "npm": ">=7.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

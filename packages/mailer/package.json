@@ -1,0 +1,22 @@
+{
+  "name": "@repo/mailer",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "lint": "eslint \"src/**/*.ts*\" --max-warnings 0"
+  },
+  "dependencies": {
+    "postmark": "^4.0.2"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*"
+  }
+}

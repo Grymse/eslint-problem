@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "PORT",
+    "POSTMARK_API_KEY",
+    "NODE_ENV",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "NEXTAUTH_SECRET"
+  ],
+  "pipeline": {
+    "build": {
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "public/dist/**"],
+      "dependsOn": ["^build"],
+      "env": ["NEXT_PUBLIC_API_HOST"]
+    },
+    "db:migrate:deploy": {
+      "env": ["DEPLOY_ENV_VARIABLE"]
+    },
+    "db:push": {},
+    "db:seed": {},
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
+    "generate": {
+      "dependsOn": ["^generate"]
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
